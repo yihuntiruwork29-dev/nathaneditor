@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NATHAN // Award-Winning Video Editor & Motion Designer</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #05060a;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    .font-syne { font-family: 'Syne', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Custom Gamified Cursor & Particles */
+    #customCursor {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(56, 189, 248, 0.8);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+      z-index: 9999;
+      mix-blend-mode: difference;
+    }
+    #customDot {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: #38bdf8;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10000;
+    }
+    body.cursor-hover #customCursor {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(56, 189, 248, 0.15);
+      border-color: #a855f7;
+    }
+
+    .glass-panel {
+      background: rgba(10, 13, 22, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card {
+      background: linear-gradient(145deg, rgba(16, 20, 32, 0.9), rgba(8, 10, 16, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
+    }
+    .spotlight {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.16), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .glass-card:hover .spotlight {
+      opacity: 1;
+    }
+    .magnetic-btn {
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #05060a; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+  </style>
+</head>
+<body class="bg-[#05060a] text-slate-100 selection:bg-sky-500 selection:text-slate-950">
+
+  <!-- Custom Cursor Elements -->
+  <div id="customCursor"></div>
+  <div id="customDot"></div>
+
+  <!-- Top Studio Status Bar -->
+  <div class="bg-black/90 border-b border-white/10 px-4 py-2 text-xs font-mono-code z-50 relative">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-slate-400">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-white font-semibold">AVAILABLE FOR YOUTUBE CHANNELS &amp; SHORT-FORM ROSTERS</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-sky-400">TC 00:08:24:12</span>
+        <button id="toggleRatesBtn" type="button" class="text-amber-400 hover:underline cursor-pointer">Public Rates: Shown</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Header & Navigation -->
+  <header class="sticky top-0 z-40 bg-[#05060a]/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 font-syne font-extrabold text-xl tracking-tight text-white group">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center text-white text-base shadow-lg shadow-sky-500/30 group-hover:rotate-12 transition transform">N</span>
+        <div>
+          <div class="leading-none">NATHAN</div>
+          <div class="text-[10px] text-sky-400 font-mono-code font-normal mt-1">CREATIVE STUDIO</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#work" class="hover:text-sky-400 transition">Work</a>
+        <a href="#motion-playground" class="hover:text-sky-400 transition">Edit Lab</a>
+        <a href="#timeline-lab" class="hover:text-sky-400 transition">Beat Splicer Game</a>
+        <a href="#workflow" class="hover:text-sky-400 transition">Craft</a>
+        <a href="#rates" id="navRatesLink" class="hover:text-sky-400 transition">Rates</a>
+        <a href="#estimator" class="hover:text-sky-400 transition">Calculator</a>
+        <a href="#contact" class="hover:text-sky-400 transition">Hire me</a>
+      </nav>
+
+      <div>
+        <a href="#contact" class="magnetic-btn px-6 py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-sky-500/25 inline-block">
+          Hire me
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Marquee Channel Ticker -->
+  <div class="border-b border-white/10 bg-black/70 py-3 overflow-hidden">
+    <div class="marquee-track items-center gap-12 text-sm font-syne uppercase tracking-wider text-slate-300 font-bold">
+      <a href="https://www.youtube.com/@yapmasterdv" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>YAPMASTER</span> <span class="text-sky-400">✦</span> (1.3M+ Views)
+      </a>
+      <a href="https://www.youtube.com/@redSIRIUS/videos" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>SIRIUS</span> <span class="text-sky-400">✦</span> (1.8M+ Views)
+      </a>
+      <a href="https://www.youtube.com/channel/UCDUno-cyO2bU6P5RviNG6oQ/about" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>BINGE WATCH</span> <span class="text-sky-400">✦</span> (1.4M+ Views)
+      </a>
+      <a href="https://www.youtube.com/watch?v=Vz7MvQzWB6Y" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>UNINDEXED</span> <span class="text-sky-400">✦</span> (55m Breakdown)
+      </a>
+      <a href="https://www.youtube.com/watch?v=05TVRa44n1k" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>CAMG</span> <span class="text-sky-400">✦</span> (1.88M+ Views)
+      </a>
+      <a href="https://www.youtube.com/watch?v=BWZyz_f9YiA" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>INTERNET ANARCHIST</span> <span class="text-sky-400">✦</span> (3D &amp; Motion)
+      </a>
+      <!-- Duplicate for seamless loop -->
+      <a href="https://www.youtube.com/@yapmasterdv" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>YAPMASTER</span> <span class="text-sky-400">✦</span> (1.3M+ Views)
+      </a>
+      <a href="https://www.youtube.com/@redSIRIUS/videos" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition flex items-center gap-3">
+        <span>SIRIUS</span> <span class="text-sky-400">✦</span> (1.8M+ Views)
+      </a>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-28">
+
+    <!-- Hero Section -->
+    <section class="pt-10 pb-12 lg:pt-16 lg:pb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-xs font-mono-code text-sky-300">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+            <span>8.9M+ Verified YouTube Views Edited Across 6 Channels</span>
+          </div>
+
+          <!-- Decreased Hero Headline Font Size -->
+          <h1 class="font-syne text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+            I CUT THE <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-cyan-300 to-indigo-400">VIDEOS</span> YOU <br />
+            can't stop watching<span class="text-sky-400">.</span>
+          </h1>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            From 45–100 minute investigative documentaries and iceberg deep-dives on <strong class="text-white">yapmaster</strong>, <strong class="text-white">SIRIUS</strong>, <strong class="text-white">Unindexed</strong>, and <strong class="text-white">Binge Watch</strong> to 3D motion graphics intros and high-retention football shorts on <strong class="text-white">@shegersoccer_ethiopia</strong>.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#work" class="magnetic-btn px-6 py-3.5 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-sky-500/30 inline-flex items-center gap-2">
+              <span>Explore Portfolio</span>
+              <span>↓</span>
+            </a>
+            <a href="#motion-playground" class="magnetic-btn px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider border border-white/15 transition">
+              Launch Edit Lab ✨
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Cinematic Monitor Card -->
+        <div class="lg:col-span-5">
+          <div class="glass-card rounded-3xl overflow-hidden border border-sky-500/30 shadow-2xl">
+            <div class="spotlight"></div>
+            <div class="bg-black/90 px-4 py-3 border-b border-white/10 flex items-center justify-between text-xs font-mono-code">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400 inline-block"></span>
+                <span class="text-slate-300 ml-2">NATHAN_STUDIO_SUITE // RENDER PIPELINE</span>
+              </div>
+              <span class="text-sky-400 font-bold">REC ●</span>
+            </div>
+            <div class="relative h-64 sm:h-72 overflow-hidden bg-slate-950">
+              <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1200&q=80" alt="Editing Workspace" class="w-full h-full object-cover filter contrast-125" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                <div>
+                  <span class="px-2.5 py-1 rounded bg-sky-500/20 border border-sky-400/40 text-sky-300 text-[10px] font-mono-code uppercase">
+                    Premiere Pro • After Effects • Frame.io
+                  </span>
+                  <h3 class="font-syne text-base font-bold text-white mt-1">Documentary &amp; Roster Master Suite</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/10">
+        <div class="glass-card rounded-2xl p-5">
+          <div class="spotlight"></div>
+          <div class="text-[11px] font-mono-code uppercase tracking-wider text-slate-400">FEATURED VIEWS</div>
+          <div class="font-syne text-2xl font-extrabold text-white mt-1">8.9M+</div>
+          <div class="text-[11px] text-emerald-400 mt-1 font-mono-code">Across 6 verified channels</div>
+        </div>
+        <div class="glass-card rounded-2xl p-5">
+          <div class="spotlight"></div>
+          <div class="text-[11px] font-mono-code uppercase tracking-wider text-slate-400">CHANNELS</div>
+          <div class="font-syne text-2xl font-extrabold text-white mt-1">7 Active</div>
+          <div class="text-[11px] text-sky-400 mt-1 font-mono-code">Long &amp; short form rosters</div>
+        </div>
+        <div class="glass-card rounded-2xl p-5">
+          <div class="spotlight"></div>
+          <div class="text-[11px] font-mono-code uppercase tracking-wider text-slate-400">SHORT TURNAROUND</div>
+          <div class="font-syne text-2xl font-extrabold text-white mt-1">12–24h</div>
+          <div class="text-[11px] text-indigo-400 mt-1 font-mono-code">20–30 Reels per month</div>
+        </div>
+        <div class="glass-card rounded-2xl p-5">
+          <div class="spotlight"></div>
+          <div class="text-[11px] font-mono-code uppercase tracking-wider text-slate-400">AUDIO STANDARD</div>
+          <div class="font-syne text-2xl font-extrabold text-white mt-1">-18 <span class="text-xs text-amber-400">to -12dB</span></div>
+          <div class="text-[11px] text-amber-400 mt-1 font-mono-code">Contextual foley &amp; ducking</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Motion FX Playground (Edit Lab) -->
+    <section id="motion-playground" class="py-14 border-t border-white/10">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-sky-500/30">
+        <div class="spotlight"></div>
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div class="text-xs font-mono-code text-sky-400 uppercase">01 // INTERACTIVE MOTION &amp; KEYFRAME FX SIMULATOR</div>
+            <h2 class="font-syne text-3xl sm:text-4xl font-extrabold text-white mt-2">Test Nathan's Motion Engine Live</h2>
+            <p class="text-slate-400 text-sm mt-1 max-w-2xl">
+              Move your cursor or drag inside the canvas to steer the 3D camera, click anywhere to trigger beat-synced SFX shockwaves, and toggle keyframe animation modes.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2" id="fxModeButtons">
+            <button type="button" data-fx-mode="bezier_zoom" class="fx-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer">
+              1. Shutter Bezier Zoom
+            </button>
+            <button type="button" data-fx-mode="parallax_3d" class="fx-mode-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">
+              2. 3D Parallax Grid
+            </button>
+            <button type="button" data-fx-mode="rehook_audio" class="fx-mode-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">
+              3. -5dB Rehook &amp; Waveform
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8 items-center">
+          <div class="lg:col-span-8">
+            <div class="relative rounded-2xl overflow-hidden border border-white/15 bg-[#030407] h-80 sm:h-96">
+              <canvas id="motionCanvas" class="w-full h-full block cursor-crosshair"></canvas>
+              <div class="absolute top-4 left-4 pointer-events-none flex flex-wrap items-center gap-2">
+                <span id="canvasModeBadge" class="px-3 py-1.5 rounded-lg bg-black/90 border border-sky-500/40 text-sky-300 text-xs font-mono-code">
+                  MODE: SHUTTER BEZIER ZOOM
+                </span>
+                <span class="px-3 py-1.5 rounded-lg bg-black/90 border border-emerald-500/40 text-emerald-300 text-xs font-mono-code">
+                  RENDER ENGINE ACTIVE
+                </span>
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 pointer-events-none flex items-center justify-between text-xs font-mono-code text-slate-400 bg-black/85 px-4 py-2.5 rounded-xl border border-white/10">
+                <span id="canvasCoordsReadout">CAM X: 0.0 | CAM Y: 0.0 | ZOOM: 1.15x</span>
+                <span class="text-amber-400">Click canvas to trigger shockwave</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 space-y-5 bg-black/80 p-6 rounded-2xl border border-white/10 font-mono-code text-xs">
+            <div>
+              <div class="flex justify-between mb-2 text-slate-300 font-semibold">
+                <span>Motion Blur Shutter</span>
+                <span id="shutterAngleVal" class="text-sky-400 font-bold">360°</span>
+              </div>
+              <input id="shutterSlider" type="range" min="0" max="360" step="15" value="360" class="w-full accent-sky-400 cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2 text-slate-300 font-semibold">
+                <span>Bezier Snap Speed</span>
+                <span id="bezierSpeedVal" class="text-indigo-400 font-bold">1.8x</span>
+              </div>
+              <input id="bezierSpeedSlider" type="range" min="5" max="35" value="18" class="w-full accent-indigo-400 cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2 text-slate-300 font-semibold">
+                <span>SFX &amp; Rehook Ducking</span>
+                <span id="audioDuckVal" class="text-emerald-400 font-bold">-14 dB / -5 dB Duck</span>
+              </div>
+              <input id="audioDuckSlider" type="range" min="12" max="18" value="14" class="w-full accent-emerald-400 cursor-pointer" />
+            </div>
+
+            <div class="pt-2 flex gap-3">
+              <button id="triggerWhipPanBtn" type="button" class="magnetic-btn flex-1 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer">
+                ⚡ Whip-Pan Zoom
+              </button>
+              <button id="triggerRehookBtn" type="button" class="magnetic-btn flex-1 py-3 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/40 text-amber-300 font-bold text-xs uppercase tracking-wider transition cursor-pointer">
+                🔊 Case Rehook
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filterable YouTube & TikTok Portfolio Showcase -->
+    <section id="work" class="py-14 border-t border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <div class="text-xs font-mono-code text-sky-400 uppercase">02 // PORTFOLIO SHOWCASE</div>
+          <h2 class="font-syne text-4xl sm:text-5xl font-extrabold text-white mt-2">
+            CHANNELS &amp; VIRAL <br />
+            <span class="text-sky-400">productions</span>.
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2" id="categoryFilterBar">
+          <button type="button" data-cat="all" class="filter-pill px-5 py-2.5 rounded-full text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer">All Work (6)</button>
+          <button type="button" data-cat="documentary" class="filter-pill px-5 py-2.5 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">Documentary &amp; Iceberg</button>
+          <button type="button" data-cat="bodycam" class="filter-pill px-5 py-2.5 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">Bodycam &amp; Crime</button>
+          <button type="button" data-cat="motion-3d" class="filter-pill px-5 py-2.5 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">3D &amp; Motion</button>
+          <button type="button" data-cat="short-form" class="filter-pill px-5 py-2.5 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">Shorts &amp; Football</button>
+        </div>
+      </div>
+
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- NEW: Gamified Beat-Sync Kinetic Caption & FX Splicer Game Widget -->
+    <section id="timeline-lab" class="py-14 border-t border-white/10">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-400/40 bg-gradient-to-br from-amber-500/10 via-slate-950 to-slate-950 shadow-2xl">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div class="text-xs font-mono-code text-amber-400 uppercase">03 // BEAT-SYNC KINETIC CAPTION &amp; FX SPLICER GAME</div>
+            <h2 class="font-syne text-3xl sm:text-4xl font-extrabold text-white mt-2">Tap in Time with the Visual Beat to Slice Edits</h2>
+            <p class="text-slate-400 text-sm mt-1 max-w-2xl">
+              Choose a editing style, press the <strong class="text-amber-400">TAP BEAT</strong> pad when the visual pulse hits the center zone, trigger camera shakes, and reach the ultimate Master Editor rank!
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2" id="splicerStyleButtons">
+            <button type="button" data-splicer-style="documentary" class="splicer-style-btn px-4 py-2 rounded-xl text-xs font-bold bg-amber-400 text-slate-950 transition cursor-pointer">
+              1. Documentary Splicer
+            </button>
+            <button type="button" data-splicer-style="football" class="splicer-style-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">
+              2. Football Shorts Beat
+            </button>
+            <button type="button" data-splicer-style="crime" class="splicer-style-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer">
+              3. Crime Iceberg Pulse
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8 items-center">
+          <!-- Game Visualizer & Pulse Ring -->
+          <div class="lg:col-span-7">
+            <div class="relative rounded-2xl overflow-hidden border border-amber-400/40 bg-[#030408] h-72 sm:h-80 flex flex-col items-center justify-center p-6 text-center">
+              <div id="gamePulseRing" class="w-36 h-36 rounded-full border-4 border-amber-400/30 flex items-center justify-center relative transition-transform duration-75">
+                <div id="gameInnerCore" class="w-20 h-20 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-300 font-mono-code font-bold text-xs uppercase tracking-wider animate-pulse">
+                  READY
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center justify-center gap-6 font-mono-code text-xs">
+                <div>
+                  <div class="text-slate-500">SPLICER SCORE</div>
+                  <div id="gameScoreVal" class="text-xl font-bold text-emerald-400 mt-0.5">0 pts</div>
+                </div>
+                <div class="w-px h-8 bg-white/10"></div>
+                <div>
+                  <div class="text-slate-500">COMBO STREAK</div>
+                  <div id="gameComboVal" class="text-xl font-bold text-amber-400 mt-0.5">0x</div>
+                </div>
+                <div class="w-px h-8 bg-white/10"></div>
+                <div>
+                  <div class="text-slate-500">EDITOR RANK</div>
+                  <div id="gameUnlockStatus" class="text-xs font-bold text-sky-400 mt-1">Play to rank up</div>
+                </div>
+              </div>
+
+              <!-- Reward Banner Modal/Box -->
+              <div id="secretRankBox" class="hidden absolute inset-x-4 bottom-4 bg-sky-500 text-slate-950 p-3 rounded-xl font-mono-code text-xs font-bold flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.6)] animate-bounce">
+                <span>👑 RANK UNLOCKED: MASTER EDITOR!</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game Controls & FX Triggers -->
+          <div class="lg:col-span-5 space-y-4 bg-black/85 p-6 rounded-2xl border border-white/10 font-mono-code text-xs">
+            <div class="flex items-center justify-between pb-3 border-b border-white/10">
+              <span class="text-slate-300 font-bold">RHYTHM SPLICER PAD</span>
+              <span id="gameBpmReadout" class="text-amber-400">128 BPM</span>
+            </div>
+
+            <button id="tapBeatBtn" type="button" class="magnetic-btn w-full py-5 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-syne font-extrabold text-base uppercase tracking-widest transition shadow-lg shadow-amber-500/30 cursor-pointer active:scale-95">
+              🥁 TAP BEAT / SLICE CLIP
+            </button>
+
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <button id="triggerGlitchFxBtn" type="button" class="magnetic-btn py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-400 border border-sky-500/30 font-bold text-xs transition cursor-pointer">
+                 glitch shake FX
+              </button>
+              <button id="triggerFlashFxBtn" type="button" class="magnetic-btn py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-indigo-400 border border-indigo-500/30 font-bold text-xs transition cursor-pointer">
+                ⚡ strobe flash FX
+              </button>
+            </div>
+
+            <p class="text-[11px] text-slate-400 text-center pt-2">
+              Hit 10 successful beat taps in a row to achieve the Master Editor rank!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Workflow & Production Standards Section -->
+    <section id="workflow" class="py-14 border-t border-white/10">
+      <div class="text-xs font-mono-code text-emerald-400 uppercase">04 // PRODUCTION PIPELINE &amp; CRAFT</div>
+      <h2 class="font-syne text-4xl sm:text-6xl font-extrabold text-white mt-2">
+        TECHNICAL STANDARDS <br />
+        <span class="text-emerald-400">&amp; benchmarks</span>.
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+        <div class="glass-card rounded-2xl p-6">
+          <div class="spotlight"></div>
+          <div class="text-xs font-mono-code text-sky-400">AUDIO ENGINEERING</div>
+          <h3 class="font-syne text-lg font-bold text-white mt-2">-18 to -12dB Foley &amp; Ducking</h3>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            Contextual sound effects (fire crackle, clock ticks, cash registers) balanced strictly between -18dB and -12dB. End-of-case original-audio rehooks duck background music by -5dB.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-6">
+          <div class="spotlight"></div>
+          <div class="text-xs font-mono-code text-amber-400">FOOTAGE CURATION</div>
+          <h3 class="font-syne text-lg font-bold text-white mt-2">Candid, Archival &amp; Non-AI 3D</h3>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            Prioritizes authentic documentary, handheld, surveillance, and archival footage over generic corporate stock, paired with 100% original 3D motion graphics.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-6">
+          <div class="spotlight"></div>
+          <div class="text-xs font-mono-code text-indigo-400">MOTION STANDARD</div>
+          <h3 class="font-syne text-lg font-bold text-white mt-2">Bezier Curves &amp; Shutter Blur</h3>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            Dynamic camera movements use nested assets with Transform Shutter Angle set to 360° and smooth Bezier temporal interpolation for natural cinema motion.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-6">
+          <div class="spotlight"></div>
+          <div class="text-xs font-mono-code text-emerald-400">MONETIZATION SAFETY</div>
+          <h3 class="font-syne text-lg font-bold text-white mt-2">YouTube Compliance</h3>
+          <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+            Strict adherence to YouTube monetization safety: impact freeze-frames with contextual callouts, transcription muting, and dual YouTube/Patreon cuts.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services & Rate Card Section -->
+    <section id="rates" class="py-14 border-t border-white/10">
+      <div class="text-xs font-mono-code text-amber-400 uppercase">05 // SERVICES &amp; PRICING</div>
+      <h2 class="font-syne text-4xl sm:text-6xl font-extrabold text-white mt-2">
+        TRANSPARENT <br />
+        <span class="text-amber-400">packages</span> &amp; rates.
+      </h2>
+      <p class="text-slate-400 text-sm mt-2 max-w-2xl">
+        Per-video, monthly roster and per-minute documentary rates ($15/min). International payouts via Payoneer.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-sky-500/30">
+          <div class="spotlight"></div>
+          <div>
+            <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-mono-code font-bold">Short-Form Viral</span>
+            <h3 class="font-syne text-2xl font-bold text-white mt-4">Reels, Shorts &amp; TikToks</h3>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-syne text-4xl font-extrabold text-white">$25 – $50</span>
+              <span class="text-xs text-slate-400">/ short</span>
+            </div>
+            <ul class="mt-6 space-y-2 text-xs text-slate-300">
+              <li>• Word-by-word kinetic captions</li>
+              <li>• 0–3s hooks built for retention</li>
+              <li>• Custom SFX &amp; B-roll overlays</li>
+              <li>• 20–30 shorts / month capacity</li>
+            </ul>
+          </div>
+          <a href="#estimator" class="magnetic-btn mt-8 w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider text-center transition block">
+            Estimate Short-Form
+          </a>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-indigo-500/30 bg-gradient-to-b from-indigo-500/10 to-transparent">
+          <div class="spotlight"></div>
+          <div>
+            <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-mono-code font-bold">YouTube &amp; Podcasts</span>
+            <h3 class="font-syne text-2xl font-bold text-white mt-4">Long-Form Narrative &amp; 3D</h3>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-syne text-4xl font-extrabold text-white">$100 – $300</span>
+              <span class="text-xs text-slate-400">/ video</span>
+            </div>
+            <ul class="mt-6 space-y-2 text-xs text-slate-300">
+              <li>• Original 3D &amp; motion graphics intros</li>
+              <li>• Smooth Bezier zooms, motion blur</li>
+              <li>• Multi-track mix &amp; -5dB rehooks</li>
+              <li>• $15 paid trial edit available</li>
+            </ul>
+          </div>
+          <a href="#estimator" class="magnetic-btn mt-8 w-full py-3.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs uppercase tracking-wider text-center transition block">
+            Estimate Long-Form
+          </a>
+        </div>
+
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-emerald-500/30">
+          <div class="spotlight"></div>
+          <div>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono-code font-bold">Extended Deep-Dives</span>
+            <h3 class="font-syne text-2xl font-bold text-white mt-4">Iceberg &amp; Webtoon</h3>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="font-syne text-4xl font-extrabold text-white">$15 <span class="text-lg text-slate-400">/min</span></span>
+              <span class="text-xs text-slate-400">($15 per finished minute)</span>
+            </div>
+            <ul class="mt-6 space-y-2 text-xs text-slate-300">
+              <li>• 45-min episode: $675 | 90-min: $1,350</li>
+              <li>• Speed-ramps, counters, censoring</li>
+              <li>• Chapter structure &amp; tier charts</li>
+              <li>• Frame.io checkpoint reviews</li>
+            </ul>
+          </div>
+          <a href="#estimator" class="magnetic-btn mt-8 w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider text-center transition block">
+            Calculate Deep-Dive
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Quote Calculator -->
+    <section id="estimator" class="py-14 border-t border-white/10">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/15">
+        <div class="text-xs font-mono-code text-amber-400 uppercase">06 // QUOTE CALCULATOR</div>
+        <h3 class="font-syne text-3xl font-bold text-white mt-2">Calculate Project Cost &amp; Turnaround</h3>
+
+        <div class="mt-6 flex flex-wrap gap-2" id="calcTierButtons">
+          <button type="button" data-calc-tier="short" class="calc-tier-btn px-6 py-3 rounded-full text-xs font-bold bg-amber-400 text-slate-950 transition cursor-pointer">Shorts</button>
+          <button type="button" data-calc-tier="long" class="calc-tier-btn px-6 py-3 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer">Long-form</button>
+          <button type="button" data-calc-tier="per_min" class="calc-tier-btn px-6 py-3 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer">Per minute</button>
+        </div>
+
+        <div class="mt-8 space-y-6 font-mono-code text-xs">
+          <div>
+            <div class="flex justify-between text-slate-300 mb-2">
+              <span id="sliderPrimaryLabel">Number of shorts</span>
+              <span id="sliderPrimaryValue" class="text-amber-400 font-bold text-sm">10</span>
+            </div>
+            <input id="calcPrimarySlider" type="range" min="1" max="30" value="10" class="w-full accent-amber-400 cursor-pointer" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center gap-3 p-3 rounded-xl bg-black/60 border border-white/10 cursor-pointer">
+              <input id="addonMotion3D" type="checkbox" class="accent-amber-400 w-4 h-4 rounded" />
+              <span>Original 3D / motion graphics</span>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl bg-black/60 border border-white/10 cursor-pointer">
+              <input id="addonPaidTrial" type="checkbox" class="accent-amber-400 w-4 h-4 rounded" />
+              <span>Paid 1-2 min trial (+$15)</span>
+            </label>
+          </div>
+
+          <div class="bg-black/90 rounded-2xl p-6 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="text-[10px] text-slate-500 uppercase">ESTIMATED BUDGET</div>
+              <div id="calcPriceOutput" class="font-syne text-3xl font-extrabold text-white mt-1">$250 – $500</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-500 uppercase">TURNOVER SLA</div>
+              <div id="calcTurnaroundOutput" class="font-syne text-lg font-bold text-amber-400 mt-1">5 – 10 days</div>
+            </div>
+            <button id="loadEstimateToBriefBtn" type="button" class="magnetic-btn px-6 py-3.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer">
+              Use in Client Brief →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Project Brief & Contact Form -->
+    <section id="contact" class="py-14 border-t border-white/10">
+      <div class="text-xs font-mono-code text-emerald-400 uppercase">07 // CONTACT EXPERIENCE</div>
+      <h2 class="font-syne text-4xl sm:text-6xl font-extrabold text-white mt-2">
+        SEND THE FOOTAGE<span class="text-amber-400">.</span> <br />
+        I'll make it move<span class="text-red-600">.</span>
+      </h2>
+      <p class="text-slate-400 text-sm mt-3 max-w-2xl">
+        Fill out a quick project brief below to copy a ready-to-send message for Discord (<strong class="text-white">nati6373</strong>) or email (<strong class="text-white">nathanmix28@gmail.com</strong>).
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-10">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-card rounded-2xl p-6 space-y-4 font-mono-code text-xs">
+            <div class="flex justify-between items-center pb-3 border-b border-white/10">
+              <span class="text-slate-400">EMAIL</span>
+              <div class="flex items-center gap-2">
+                <span id="contactEmailInline" class="text-white font-bold">nathanmix28@gmail.com</span>
+                <button type="button" onclick="navigator.clipboard.writeText('nathanmix28@gmail.com'); alert('Email copied!');" class="px-2 py-1 rounded bg-slate-800 text-sky-400 hover:bg-slate-700 cursor-pointer">COPY</button>
+              </div>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-white/10">
+              <span class="text-slate-400">DISCORD</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sky-400 font-bold">nati6373</span>
+                <button type="button" onclick="navigator.clipboard.writeText('nati6373'); alert('Discord username copied!');" class="px-2 py-1 rounded bg-slate-800 text-sky-400 hover:bg-slate-700 cursor-pointer">COPY</button>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">TIKTOK</span>
+              <a href="https://www.tiktok.com/@shegersoccer_ethiopia" target="_blank" rel="noopener noreferrer" class="text-sky-400 font-bold hover:underline">@shegersoccer_ethiopia ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 border border-white/15">
+          <form id="briefForm" class="space-y-4 text-xs font-mono-code">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="clientNameInput" class="block text-slate-400 mb-1 uppercase">Your name / channel</label>
+                <input id="clientNameInput" type="text" placeholder="e.g. Alex / Documentary Channel" class="w-full bg-black/60 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-sky-400" />
+              </div>
+              <div>
+                <label for="clientEmailInput" class="block text-slate-400 mb-1 uppercase">Email</label>
+                <input id="clientEmailInput" type="email" placeholder="alex@channel.com" class="w-full bg-black/60 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-sky-400" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-slate-400 mb-2 uppercase">Style you're after</label>
+              <div class="flex flex-wrap gap-2" id="styleRadioContainer">
+                <button type="button" data-style="Documentary" class="style-btn px-4 py-2 rounded-full text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer">Documentary</button>
+                <button type="button" data-style="3D & motion" class="style-btn px-4 py-2 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer">3D &amp; motion</button>
+                <button type="button" data-style="Webtoon" class="style-btn px-4 py-2 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer">Webtoon</button>
+                <button type="button" data-style="Compilation" class="style-btn px-4 py-2 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer">Compilation</button>
+                <button type="button" data-style="Shorts" class="style-btn px-4 py-2 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer">Shorts</button>
+              </div>
+            </div>
+
+            <div>
+              <label for="clientRefUrlInput" class="block text-slate-400 mb-1 uppercase">Reference video or script link (optional)</label>
+              <input id="clientRefUrlInput" type="url" placeholder="https://youtube.com/..." class="w-full bg-black/60 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-sky-400" />
+            </div>
+
+            <div>
+              <label for="clientBudgetInput" class="block text-slate-400 mb-1 uppercase">Budget / estimate (optional)</label>
+              <input id="clientBudgetInput" type="text" placeholder="e.g. $250 – $500" class="w-full bg-black/60 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-sky-400" />
+            </div>
+
+            <div>
+              <label for="clientNotesInput" class="block text-slate-400 mb-1 uppercase">Video length, monthly volume, deadline...</label>
+              <textarea id="clientNotesInput" rows="3" placeholder="Tell me what you're working on..." class="w-full bg-black/60 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-sky-400"></textarea>
+            </div>
+
+            <div class="pt-2 flex items-center justify-between gap-4">
+              <a id="mailtoBriefLink" href="mailto:nathanmix28@gmail.com" class="text-xs text-slate-400 hover:text-sky-400 transition underline">Open in email client ↗</a>
+              <button id="submitBriefBtn" type="button" class="magnetic-btn px-6 py-3.5 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer">
+                Render &amp; send brief
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-black py-16 px-4 text-center space-y-6">
+    <div class="font-syne text-5xl sm:text-7xl lg:text-9xl font-extrabold text-white tracking-tight">
+      LET'S <span class="text-sky-400">cut</span><span class="text-red-600">.</span>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-mono-code text-slate-400">
+      <span class="text-white font-bold">nathanmix28@gmail.com</span>
+      <span>•</span>
+      <span class="text-sky-400 font-bold">Discord: nati6373</span>
+      <span>•</span>
+      <a href="https://www.tiktok.com/@shegersoccer_ethiopia" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400">@shegersoccer_ethiopia ↗</a>
+    </div>
+    <div class="text-[11px] font-mono-code text-slate-600 pt-8">
+      © 2026 NATHAN — VIDEO EDITOR • PREMIERE PRO • AFTER EFFECTS • FRAME.IO
+    </div>
+  </footer>
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4">
+    <div class="glass-card rounded-3xl max-w-3xl w-full p-6 sm:p-8 border border-white/20 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+        <div>
+          <span id="modalCategoryBadge" class="px-2.5 py-1 rounded bg-sky-500/20 text-sky-300 text-xs font-mono-code">Category</span>
+          <h3 id="modalProjectTitle" class="font-syne text-2xl font-bold text-white mt-2">Title</h3>
+        </div>
+        <button id="closeModalBtn" type="button" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold cursor-pointer">✕</button>
+      </div>
+      <div class="mt-6 space-y-4 text-xs sm:text-sm text-slate-300">
+        <div id="modalVideoEmbedContainer" class="w-full aspect-video rounded-xl overflow-hidden bg-black flex items-center justify-center">
+          <iframe id="modalYoutubeIframe" class="w-full h-full hidden" src="" allowfullscreen></iframe>
+          <img id="modalProjectImg" src="" alt="Thumbnail" class="w-full h-full object-cover" />
+        </div>
+        <p id="modalProjectDesc" class="leading-relaxed"></p>
+        <div class="bg-black/60 rounded-xl p-4 border border-white/10 space-y-2 font-mono-code">
+          <div class="text-xs text-sky-400 uppercase">Technical Execution</div>
+          <ul id="modalSpecsList" class="space-y-1 text-xs text-slate-300 list-disc pl-4"></ul>
+        </div>
+        <div id="modalLinksContainer" class="flex flex-wrap gap-2 pt-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-xl bg-sky-400 text-slate-950 font-bold text-xs shadow-xl font-mono-code">
+    Copied!
+  </div>
+
+  <script>
+    // --- Custom Gamified Cursor & Magnetic Physics ---
+    const cursor = document.getElementById('customCursor');
+    const dot = document.getElementById('customDot');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.top = mouseY + 'px';
+      dot.style.left = mouseX + 'px';
+    });
+
+    function cursorLoop() {
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      cursor.style.top = cursorY + 'px';
+      cursor.style.left = cursorX + 'px';
+      requestAnimationFrame(cursorLoop);
+    }
+    requestAnimationFrame(cursorLoop);
+
+    document.querySelectorAll('a, button, input, textarea, select, .glass-card').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // Magnetic buttons
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px)';
+      });
+    });
+
+    // --- State & App Logic ---
+    const state = {
+      showRates: true,
+      selectedCategory: 'all',
+      calcTier: 'short',
+      calcSliderVal: 10,
+      addonMotion3D: false,
+      addonPaidTrial: false,
+      selectedStyle: 'Documentary',
+      activeSplicerStyle: 'documentary',
+      gameScore: 0,
+      gameCombo: 0,
+      scrubPercent: 25,
+      isPlaying: false,
+      playInterval: null,
+      fxMode: 'bezier_zoom',
+      shutterAngle: 360,
+      bezierSpeed: 1.8,
+      audioDuckDb: 14
+    };
+
+    const projectsData = [
+      {
+        id: 'yapmaster_doc',
+        title: 'INVESTIGATIVE COMMUNITY DOCUMENTARIES',
+        category: 'documentary',
+        categoryLabel: 'DOCUMENTARY',
+        viewsBadge: '1.3M+ VIEWS',
+        thumbnail: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+        ytId: 'gruW7HIPeK4',
+        summary: 'Multi-case long-form investigative documentaries edited for the yapmaster YouTube channel, featuring original-audio case rehooks (-5dB music ducking), Eurostile Bold feature titles, and candid archival curation.',
+        specs: [
+          'Edited viral episodes including Furry Community [Vol. 2] (1.31M+ views), Brony Community (832K+ views), and Livestream Crimes (379K+ views)',
+          'Original-sound rehook clip placed before every case with automatic -5dB background music ducking and -18dB to -12dB foley SFX',
+          'Full YouTube monetization safety pass: freeze-frame impact callouts, audio bleeps, and motion-tracked highlight arrows'
+        ],
+        links: [
+          { label: 'Watch Furry Community Vol. 2 (1.3M Views)', url: 'https://www.youtube.com/watch?v=gruW7HIPeK4' },
+          { label: 'yapmaster YouTube Channel', url: 'https://www.youtube.com/@yapmasterdv' }
+        ]
+      },
+      {
+        id: 'binge_watch_crime',
+        title: 'WHEN THIEVES ROB THE WRONG HOUSE',
+        category: 'bodycam',
+        categoryLabel: 'CRIME & COMPILATION',
+        viewsBadge: '1.4M+ VIEWS',
+        thumbnail: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
+        ytId: 'FGt8quE3DAk',
+        summary: 'High-retention multi-clip instant-karma and surveillance compilations edited for Binge Watch, synced to studio voiceover with speed-ramps, Day 1–3 counters, and policy-compliant blurring.',
+        specs: [
+          'Precision timestamp speed-ups through surveillance dead-air while highlighting key visual turns with pointers and counters',
+          'On-screen safety disclaimers and sensitive-word transcription muting',
+          'Scored with Epidemic Sound tracks mixed cleanly underneath vocal commentary'
+        ],
+        links: [
+          { label: 'Watch on YouTube (1.4M Views)', url: 'https://www.youtube.com/watch?v=FGt8quE3DAk' },
+          { label: 'Binge Watch Channel', url: 'https://www.youtube.com/channel/UCDUno-cyO2bU6P5RviNG6oQ/about' }
+        ]
+      },
+      {
+        id: 'sirius_iceberg',
+        title: 'THE DEEPEST DISTURBING REDDIT ICEBERG',
+        category: 'documentary',
+        categoryLabel: 'ICEBERG',
+        viewsBadge: '1.81M+ VIEWS',
+        thumbnail: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
+        ytId: 'cJ-rcwZryqo',
+        summary: 'Feature-length multi-tier iceberg documentary editing for SIRIUS (303K+ subscribers), combining atmospheric sound design, smooth Bezier zoom animations, and archival evidence pacing.',
+        specs: [
+          '1 hour 43 minute multi-level iceberg narrative maintaining continuous visual motion across every frame',
+          'Clean chapter transitions, eerie atmospheric score balancing, and crisp voiceover presence',
+          'Seamless integration of archival screenshots, Reddit threads with radio-effect voiceover quotes'
+        ],
+        links: [
+          { label: 'Watch on YouTube (1.81M Views)', url: 'https://www.youtube.com/watch?v=cJ-rcwZryqo' },
+          { label: 'SIRIUS Channel', url: 'https://www.youtube.com/@redSIRIUS/videos' }
+        ]
+      },
+      {
+        id: 'unindexed_webtoon',
+        title: 'WEBTOON & TIER-LIST ANIMATION',
+        category: 'motion-3d',
+        categoryLabel: 'WEBTOON MOTION',
+        viewsBadge: '1.99M+ VIEWS',
+        thumbnail: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+        ytId: '05TVRa44n1k',
+        summary: 'Dynamic comic-panel and webtoon storytelling for Unindexed and CAMG, utilizing motion sequences, Shutter Angle Bezier camera pans, Basic 3D depth, and persistent Tier Chart rankings.',
+        specs: [
+          'Three signature panel motion techniques: Quick Bezier Camera Pans, Single-Panel over Blurred Full-Page 3D',
+          'Persistent end-of-case Tier Chart rankings carrying AU character cards across co-edited segments',
+          'Dual delivery pipeline supporting both YouTube-safe cuts and extended Patreon uncensored versions'
+        ],
+        links: [
+          { label: 'Watch on YouTube (1.88M Views)', url: 'https://www.youtube.com/watch?v=05TVRa44n1k' },
+          { label: 'Unindexed Digital Circus AUs', url: 'https://www.youtube.com/watch?v=Vz7MvQzWB6Y' }
+        ]
+      },
+      {
+        id: 'internet_anarchist',
+        title: 'ORIGINAL 3D DOCUMENTARY INTROS',
+        category: 'motion-3d',
+        categoryLabel: '3D & MOTION',
+        viewsBadge: '1.2M+ STYLE',
+        thumbnail: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80',
+        ytId: 'BWZyz_f9YiA',
+        summary: '100% original motion graphics and 3D camera environment edits built with zero AI-generated filler, matching the high-velocity visual storytelling of Internet Anarchist and Ryan Pictures.',
+        specs: [
+          'Crafted to match the exact 3D camera depth, glass/grid compositing, and velocity curves of Internet Anarchist & Ryan Pictures',
+          'Every syllable of the opening hook is accented with kinetic typography, 3D parallax layers, and tactile foley',
+          'Reviewed and approved via Frame.io with rapid same-day 10–20 second sample turnarounds'
+        ],
+        links: [
+          { label: 'Watch Reference on YouTube', url: 'https://www.youtube.com/watch?v=BWZyz_f9YiA' }
+        ]
+      },
+      {
+        id: 'sheger_football',
+        title: 'HIGH-RETENTION FOOTBALL SHORTS',
+        category: 'short-form',
+        categoryLabel: 'SHORTS',
+        viewsBadge: '418K LIKES',
+        thumbnail: 'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80',
+        ytId: 'ce1G9Pr5YWg',
+        summary: 'High-retention football shorts, player spotlight reels, and weekly TikTok creator edits featuring kinetic captions, beat-synced impacts, and tight hooks.',
+        specs: [
+          'Strong 0–3s visual & audio hooks engineered for maximum vertical retention on TikTok, Reels, and YouTube Shorts',
+          'Dynamic word-by-word captions, custom SFX risers (-18dB to -12dB), and speed-ramped B-roll overlays',
+          'Consistent 12–24 hour turnaround with 20–30 videos/month production capacity'
+        ],
+        links: [
+          { label: 'TikTok @shegersoccer_ethiopia', url: 'https://www.tiktok.com/@shegersoccer_ethiopia' }
+        ]
+      },
+      {
+        id: 'into_the_breach_shorts',
+        title: 'INTO THE BREACH — MILITARY PODCAST SHORTS & TACTICAL BREAKDOWNS',
+        category: 'short-form',
+        categoryLabel: 'SHORTS',
+        viewsBadge: 'PODCAST SHORTS',
+        thumbnail: 'https://images.unsplash.com/photo-1589828135898-7576579fc95f?auto=format&fit=crop&w=1200&q=80',
+        ytId: 'yaJrP2p5KI0',
+        summary: 'High-retention military podcast shorts and tactical storytelling edited for the Into The Breach channel. Emphasizes intense narrative pacing, immersive sound design, and vertical optimization.',
+        specs: [
+          'Vertical formatting (9:16) with dynamic motion graphics and auto-captions',
+          'Edited featured short: Mass Casualty On Second Mission',
+          'Audio balancing and intense sound design for combat narratives'
+        ],
+        links: [
+          { label: 'Watch: Mass Casualty On Second Mission', url: 'https://www.youtube.com/shorts/yaJrP2p5KI0' }
+        ]
+      }
+    ];
+
+    const splicerStyles = {
+      documentary: { title: 'Documentary Splicer', bpm: 110, prompt: 'Tap on the heavy narration beats to cut clips & add kinetic text!' },
+      football: { title: 'Football Beats', bpm: 135, prompt: 'Tap fast on every goal beat to trigger camera shakes & speed ramps!' },
+      crime: { title: 'Crime Iceberg Pulse', bpm: 95, prompt: 'Tap slow on atmospheric bass drops to flash case evidence!' }
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBanner');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 2500);
+    }
+
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const filtered = projectsData.filter(item => state.selectedCategory === 'all' || item.category === state.selectedCategory);
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer" onclick="openProjectModal('${item.id}')">
+          <div class="spotlight"></div>
+          <div class="relative h-64 overflow-hidden bg-black">
+            <img src="${item.thumbnail}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 filter contrast-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-black/80 border border-white/20 text-xs font-mono-code text-sky-400">${item.categoryLabel}</span>
+            </div>
+            <div class="absolute top-4 right-4">
+              <span class="px-3 py-1 rounded-full bg-red-600/90 text-white text-xs font-mono-code font-bold">${item.viewsBadge}</span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+              <div>
+                <h3 class="font-syne text-lg font-bold text-white">${item.title}</h3>
+              </div>
+              <div class="w-12 h-12 rounded-full bg-white text-slate-950 font-bold flex items-center justify-center group-hover:bg-sky-400 transition shadow-xl">
+                ▶
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openProjectModal(id) {
+      const item = projectsData.find(p => p.id === id) || projectsData[0];
+      document.getElementById('modalCategoryBadge').textContent = item.categoryLabel + ' • ' + item.viewsBadge;
+      document.getElementById('modalProjectTitle').textContent = item.title;
+      document.getElementById('modalProjectDesc').textContent = item.summary;
+      document.getElementById('modalSpecsList').innerHTML = item.specs.map(s => `<li>${s}</li>`).join('');
+
+      const ytIframe = document.getElementById('modalYoutubeIframe');
+      const modalImg = document.getElementById('modalProjectImg');
+      if (item.ytId) {
+        ytIframe.src = `https://www.youtube.com/embed/${item.ytId}?autoplay=1`;
+        ytIframe.classList.remove('hidden');
+        modalImg.classList.add('hidden');
+      } else {
+        ytIframe.src = '';
+        ytIframe.classList.add('hidden');
+        modalImg.src = item.thumbnail;
+        modalImg.classList.remove('hidden');
+      }
+
+      document.getElementById('modalLinksContainer').innerHTML = item.links.map(l => `
+        <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-sky-500 text-slate-950 font-bold text-xs">
+          ${l.label} ↗
+        </a>
+      `).join('');
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.getElementById('modalYoutubeIframe').src = '';
+    }
+
+    // --- Beat-Sync Kinetic Caption & FX Splicer Game Logic ---
+    function initSplicerGame() {
+      const ring = document.getElementById('gamePulseRing');
+      const core = document.getElementById('gameInnerCore');
+      const scoreVal = document.getElementById('gameScoreVal');
+      const comboVal = document.getElementById('gameComboVal');
+      const unlockStatus = document.getElementById('gameUnlockStatus');
+      const secretBox = document.getElementById('secretRankBox');
+      const tapBtn = document.getElementById('tapBeatBtn');
+
+      let styleObj = splicerStyles[state.activeSplicerStyle];
+      document.getElementById('gameBpmReadout').textContent = styleObj.bpm + ' BPM';
+
+      tapBtn.addEventListener('click', () => {
+        state.gameScore += 100 * (state.gameCombo + 1);
+        state.gameCombo += 1;
+        scoreVal.textContent = state.gameScore + ' pts';
+        comboVal.textContent = state.gameCombo + 'x';
+
+        ring.style.transform = 'scale(1.15)';
+        setTimeout(() => ring.style.transform = 'scale(1)', 100);
+
+        core.textContent = 'SLICE! ✂';
+        setTimeout(() => core.textContent = 'READY', 300);
+
+        if (state.gameCombo >= 10) {
+          unlockStatus.textContent = 'MASTER EDITOR';
+          unlockStatus.classList.replace('text-sky-400', 'text-amber-400');
+          secretBox.classList.remove('hidden');
+          ring.classList.replace('border-amber-400/30', 'border-sky-500/80');
+          ring.style.boxShadow = '0 0 40px rgba(56,189,248,0.5)';
+          core.classList.replace('bg-amber-400/20', 'bg-sky-500/40');
+          core.classList.replace('text-amber-300', 'text-sky-300');
+        }
+      });
+
+      document.getElementById('triggerGlitchFxBtn').addEventListener('click', () => {
+        state.gameScore += 50;
+        scoreVal.textContent = state.gameScore + ' pts';
+        showToast('Glitch FX triggered! Clip spliced.');
+      });
+
+      document.getElementById('triggerFlashFxBtn').addEventListener('click', () => {
+        state.gameScore += 50;
+        scoreVal.textContent = state.gameScore + ' pts';
+        showToast('Strobe flash applied to timeline!');
+      });
+    }
+
+    function updateCalculator() {
+      const slider = document.getElementById('calcPrimarySlider');
+      const val = Number(slider.value) || 1;
+      state.calcSliderVal = val;
+
+      const label = document.getElementById('sliderPrimaryLabel');
+      const valDisplay = document.getElementById('sliderPrimaryValue');
+      const priceOut = document.getElementById('calcPriceOutput');
+      const turnaroundOut = document.getElementById('calcTurnaroundOutput');
+
+      if (state.calcTier === 'short') {
+        label.textContent = 'Number of shorts';
+        valDisplay.textContent = val;
+        priceOut.textContent = `$${val * 25} – $${val * 50}`;
+        turnaroundOut.textContent = val <= 5 ? '12 – 24 hours' : '5 – 10 days';
+      } else if (state.calcTier === 'long') {
+        label.textContent = 'Number of long-form videos';
+        valDisplay.textContent = val;
+        priceOut.textContent = `$${val * 100} – $${val * 300}`;
+        turnaroundOut.textContent = `${val * 2} – ${val * 3} business days`;
+      } else {
+        label.textContent = 'Finished runtime (minutes)';
+        valDisplay.textContent = val + ' min';
+        const cost = val * 15;
+        priceOut.textContent = `$${cost} total ($15/min)`;
+        turnaroundOut.textContent = `${Math.max(1, Math.ceil(val / 3))} days`;
+      }
+    }
+
+    function updateMailtoLink() {
+      const name = document.getElementById('clientNameInput').value.trim() || 'Client';
+      const email = document.getElementById('clientEmailInput').value.trim() || 'client@example.com';
+      const ref = document.getElementById('clientRefUrlInput').value.trim() || 'N/A';
+      const budget = document.getElementById('clientBudgetInput').value.trim() || document.getElementById('calcPriceOutput').textContent;
+      const notes = document.getElementById('clientNotesInput').value.trim() || 'New video project inquiry.';
+
+      const subject = encodeURIComponent(`Video Editing Project Inquiry — ${name}`);
+      const body = encodeURIComponent(
+        `Hi Nathan,\n\nI'd love to hire you for a video project.\n\n` +
+        `Name: ${name}\nEmail: ${email}\nStyle: ${state.selectedStyle}\nReference: ${ref}\nBudget: ${budget}\nNotes: ${notes}\n\nBest,\n${name}`
+      );
+      document.getElementById('mailtoBriefLink').href = `mailto:nathanmix28@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    // --- Interactive HTML5 Canvas Motion FX Engine ---
+    function initMotionCanvas() {
+      const canvas = document.getElementById('motionCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = 800;
+      let height = 360;
+      let mouseX = 0, mouseY = 0;
+      let camX = 0, camY = 0;
+      let currentZoom = 1.15;
+      let whipVelocity = 0;
+      let rehookPulse = 0;
+      let time = 0;
+
+      const trailHistory = [];
+      const shockwaves = [];
+      const nodes = [];
+
+      for (let i = 0; i < 32; i++) {
+        nodes.push({
+          x: (Math.random() - 0.5) * 800,
+          y: (Math.random() - 0.5) * 360,
+          z: Math.random() * 2 + 0.5,
+          hue: i % 2 === 0 ? 198 : 260
+        });
+      }
+
+      function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        width = Math.max(300, Math.floor(rect.width));
+        height = Math.max(260, Math.floor(rect.height));
+        canvas.width = width;
+        canvas.height = height;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+      });
+
+      canvas.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        shockwaves.push({ x: e.clientX - rect.left, y: e.clientY - rect.top, radius: 10, alpha: 1.0 });
+        whipVelocity = 0.4;
+      });
+
+      document.getElementById('triggerWhipPanBtn').addEventListener('click', () => {
+        whipVelocity = 0.6;
+        mouseX = (Math.random() - 0.5) * 2;
+        mouseY = (Math.random() - 0.5) * 2;
+        shockwaves.push({ x: width / 2, y: height / 2, radius: 15, alpha: 1.0 });
+      });
+
+      document.getElementById('triggerRehookBtn').addEventListener('click', () => {
+        rehookPulse = 1.0;
+        shockwaves.push({ x: width / 2, y: height / 2, radius: 12, alpha: 1.0 });
+      });
+
+      function loop() {
+        time += 0.025 * state.bezierSpeed;
+        const ease = 0.08 * state.bezierSpeed;
+        camX += (mouseX * 130 - camX) * ease;
+        camY += (mouseY * 80 - camY) * ease;
+
+        if (whipVelocity > 0.005) {
+          currentZoom = 1.15 + Math.sin(time * 4) * 0.15 + whipVelocity;
+          whipVelocity *= 0.9;
+        } else {
+          currentZoom += (1.15 + Math.sin(time * 1.5) * 0.06 - currentZoom) * 0.08;
+        }
+
+        if (rehookPulse > 0.01) rehookPulse *= 0.95;
+
+        const blurAlpha = Math.max(0.12, 1 - (state.shutterAngle / 420));
+        ctx.fillStyle = `rgba(5, 6, 10, ${blurAlpha.toFixed(2)})`;
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.save();
+        ctx.translate(width / 2 - camX * 0.4, height / 2 - camY * 0.4);
+        ctx.scale(currentZoom, currentZoom);
+
+        // Background Grid
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+        ctx.lineWidth = 1;
+        const step = 50;
+        for (let x = -width; x < width; x += step) {
+          ctx.beginPath(); ctx.moveTo(x, -height); ctx.lineTo(x, height); ctx.stroke();
+        }
+        for (let y = -height; y < height; y += step) {
+          ctx.beginPath(); ctx.moveTo(-width, y); ctx.lineTo(width, y); ctx.stroke();
+        }
+
+        if (state.fxMode === 'bezier_zoom') {
+          ctx.strokeStyle = 'rgba(56, 189, 248, 0.8)';
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          ctx.moveTo(-200, 70);
+          ctx.bezierCurveTo(-70, 70, -30, -70, 200, -70);
+          ctx.stroke();
+
+          const t = (Math.sin(time * 1.5) + 1) / 2;
+          const bx = (1 - t) * (1 - t) * (1 - t) * (-200) + 3 * (1 - t) * (1 - t) * t * (-70) + 3 * (1 - t) * t * t * (-30) + t * t * t * 200;
+          const by = (1 - t) * (1 - t) * (1 - t) * (70) + 3 * (1 - t) * (1 - t) * t * (70) + 3 * (1 - t) * t * t * (-70) + t * t * t * (-70);
+
+          trailHistory.push({ x: bx, y: by });
+          if (trailHistory.length > Math.floor(state.shutterAngle / 20) + 3) trailHistory.shift();
+
+          trailHistory.forEach((pt, idx) => {
+            const ratio = (idx + 1) / trailHistory.length;
+            ctx.fillStyle = `rgba(56, 189, 248, ${ratio * 0.7})`;
+            ctx.beginPath(); ctx.arc(pt.x, pt.y, 9 * ratio + 2, 0, Math.PI * 2); ctx.fill();
+          });
+
+          ctx.strokeStyle = 'rgba(250, 204, 21, 0.9)';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(bx - 45, by - 28, 90, 56);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '11px "JetBrains Mono", monospace';
+          ctx.fillText(`BEZIER KEYFRAME // ${state.shutterAngle}° BLUR`, bx - 80, by - 36);
+        } else if (state.fxMode === 'parallax_3d') {
+          nodes.forEach(n => {
+            const px = (n.x - camX * n.z * 0.5);
+            const py = (n.y - camY * n.z * 0.5);
+            ctx.fillStyle = `hsla(${n.hue}, 90%, 65%, ${0.3 * n.z})`;
+            ctx.strokeStyle = `hsla(${n.hue}, 90%, 65%, 0.7)`;
+            ctx.lineWidth = 1.5;
+            ctx.fillRect(px - 30 * n.z, py - 18 * n.z, 60 * n.z, 36 * n.z);
+            ctx.strokeRect(px - 30 * n.z, py - 18 * n.z, 60 * n.z, 36 * n.z);
+          });
+        } else if (state.fxMode === 'rehook_audio') {
+          const bars = 48;
+          const barW = 8;
+          const gap = 4;
+          const totalW = bars * (barW + gap);
+          for (let i = 0; i < bars; i++) {
+            const x = -totalW / 2 + i * (barW + gap);
+            const vo = Math.abs(Math.sin(time * 3 + i * 0.3)) * 75 + 10;
+            const mus = (Math.abs(Math.cos(time * 2 + i * 0.2)) * 50 + 10) * (rehookPulse > 0.1 ? 0.3 : 0.75);
+
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.9)';
+            ctx.fillRect(x, -vo, barW, vo);
+
+            ctx.fillStyle = rehookPulse > 0.1 ? 'rgba(251, 191, 36, 0.9)' : 'rgba(56, 189, 248, 0.7)';
+            ctx.fillRect(x, 6, barW, mus);
+          }
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '11px "JetBrains Mono", monospace';
+          ctx.fillText(rehookPulse > 0.1 ? 'REHOOK DUCK -5dB ACTIVE' : 'VO (-4dB) + MUSIC (-30dB) // CLICK REHOOK', -180, -95);
+        }
+
+        ctx.restore();
+
+        for (let i = shockwaves.length - 1; i >= 0; i--) {
+          const sw = shockwaves[i];
+          sw.radius += 6;
+          sw.alpha *= 0.9;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${sw.alpha.toFixed(2)})`;
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2); ctx.stroke();
+          if (sw.alpha < 0.03) shockwaves.splice(i, 1);
+        }
+
+        document.getElementById('canvasCoordsReadout').textContent = `CAM X: ${camX.toFixed(1)} | CAM Y: ${camY.toFixed(1)} | ZOOM: ${currentZoom.toFixed(2)}x`;
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('toggleRatesBtn').addEventListener('click', () => {
+        state.showRates = !state.showRates;
+        document.getElementById('rates').classList.toggle('hidden', !state.showRates);
+        document.getElementById('navRatesLink').classList.toggle('hidden', !state.showRates);
+        document.getElementById('toggleRatesBtn').textContent = state.showRates ? 'Public Rates: Shown' : 'Public Rates: Hidden';
+      });
+
+      // FX Playground Mode switchers
+      document.querySelectorAll('.fx-mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.fxMode = btn.getAttribute('data-fx-mode');
+          document.querySelectorAll('.fx-mode-btn').forEach(b => {
+            b.className = 'fx-mode-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer';
+          });
+          btn.className = 'fx-mode-btn px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer';
+          document.getElementById('canvasModeBadge').textContent = 'MODE: ' + btn.textContent.trim().toUpperCase();
+        });
+      });
+
+      document.getElementById('shutterSlider').addEventListener('input', (e) => {
+        state.shutterAngle = Number(e.target.value);
+        document.getElementById('shutterAngleVal').textContent = state.shutterAngle + '°';
+      });
+
+      document.getElementById('bezierSpeedSlider').addEventListener('input', (e) => {
+        state.bezierSpeed = Number(e.target.value) / 10;
+        document.getElementById('bezierSpeedVal').textContent = state.bezierSpeed.toFixed(1) + 'x';
+      });
+
+      document.getElementById('audioDuckSlider').addEventListener('input', (e) => {
+        state.audioDuckDb = Number(e.target.value);
+        document.getElementById('audioDuckVal').textContent = `-${state.audioDuckDb} dB / -5 dB Duck`;
+      });
+
+      // Portfolio category filters
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.selectedCategory = btn.getAttribute('data-cat');
+          document.querySelectorAll('.filter-pill').forEach(b => {
+            b.className = 'filter-pill px-5 py-2.5 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer';
+          });
+          btn.className = 'filter-pill px-5 py-2.5 rounded-full text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer';
+          renderProjects();
+        });
+      });
+
+      // Splicer Game Style switchers
+      document.querySelectorAll('.splicer-style-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.activeSplicerStyle = btn.getAttribute('data-splicer-style');
+          document.querySelectorAll('.splicer-style-btn').forEach(b => {
+            b.className = 'splicer-style-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-white/15 hover:border-white/30 transition cursor-pointer';
+          });
+          btn.className = 'splicer-style-btn px-4 py-2 rounded-xl text-xs font-bold bg-amber-400 text-slate-950 transition cursor-pointer';
+          let st = splicerStyles[state.activeSplicerStyle];
+          document.getElementById('gameBpmReadout').textContent = st.bpm + ' BPM';
+        });
+      });
+
+      // Quote Calculator Tiers
+      document.querySelectorAll('.calc-tier-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.calcTier = btn.getAttribute('data-calc-tier');
+          document.querySelectorAll('.calc-tier-btn').forEach(b => {
+            b.className = 'calc-tier-btn px-6 py-3 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer';
+          });
+          btn.className = 'calc-tier-btn px-6 py-3 rounded-full text-xs font-bold bg-amber-400 text-slate-950 transition cursor-pointer';
+
+          const slider = document.getElementById('calcPrimarySlider');
+          if (state.calcTier === 'short') { slider.min = 1; slider.max = 30; slider.value = 10; }
+          else if (state.calcTier === 'long') { slider.min = 1; slider.max = 12; slider.value = 2; }
+          else { slider.min = 10; slider.max = 90; slider.value = 45; }
+          updateCalculator();
+        });
+      });
+
+      document.getElementById('calcPrimarySlider').addEventListener('input', updateCalculator);
+
+      document.getElementById('loadEstimateToBriefBtn').addEventListener('click', () => {
+        document.getElementById('clientBudgetInput').value = document.getElementById('calcPriceOutput').textContent;
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        showToast('Quote loaded into brief!');
+      });
+
+      // Style radio buttons
+      document.querySelectorAll('.style-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.selectedStyle = btn.getAttribute('data-style');
+          document.querySelectorAll('.style-btn').forEach(b => {
+            b.className = 'style-btn px-4 py-2 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-white/15 transition cursor-pointer';
+          });
+          btn.className = 'style-btn px-4 py-2 rounded-full text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer';
+          updateMailtoLink();
+        });
+      });
+
+      ['clientNameInput', 'clientEmailInput', 'clientRefUrlInput', 'clientBudgetInput', 'clientNotesInput'].forEach(id => {
+        document.getElementById(id).addEventListener('input', updateMailtoLink);
+      });
+
+      document.getElementById('submitBriefBtn').addEventListener('click', () => {
+        showToast('Project brief ready! Opening email client...');
+        window.location.href = document.getElementById('mailtoBriefLink').href;
+      });
+
+      document.getElementById('closeModalBtn').addEventListener('click', closeProjectModal);
+      document.getElementById('projectModal').addEventListener('click', (e) => {
+        if (e.target.id === 'projectModal') closeProjectModal();
+      });
+
+      renderProjects();
+      initSplicerGame();
+      updateCalculator();
+      updateMailtoLink();
+      initMotionCanvas();
+    });
+  </script>
+</body>
+</html>
